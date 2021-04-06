@@ -1,17 +1,16 @@
 import matplotlib.pyplot as plt
-import numpy as np
+
+from Labyrinth.utils import generateMap
+
+''' Class of random labyrinth generation. '''
 
 
 class LabyrinthMap:
 
     def __init__(self, height=50, width=50):
-        self.map = np.zeros((height, width))
-        nb_wall = np.random.randint(0, 1000)
-        x_positions = np.random.randint(0, 50, size=nb_wall)
-        y_positions = np.random.randint(0, 50, size=nb_wall)
+        self.map = generateMap(height, width)
 
-        for i in range(nb_wall):
-            self.map[x_positions[i], y_positions[i]] = 1
+    ''' Flush the generated labyrinth. '''
 
     def flush(self):
         plt.matshow(self.map)
